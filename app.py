@@ -39,7 +39,7 @@ unsafe_allow_html=True,
 )
 
 #load data
-df = pd.read_csv('data/davidj_joined_new2.csv')
+df = pd.read_csv('data/djay_joined_new2.csv')
 df['ymd'] = df.Date.map(lambda x: f'{x.split("/")[2].zfill(2)}-{x.split("/")[0].zfill(2)}-{x.split("/")[1].zfill(2)}')
 	
 #sidebar
@@ -134,6 +134,7 @@ fig.update_layout(
         font_family="Maitree"
     ),
     margin=dict(l=50, r=50, t=60, b=50),
+    yaxis_tickformat = '.3%'
 )
 
 st.plotly_chart(fig, use_container_width=True)
@@ -216,9 +217,12 @@ fig.update_layout(
         font_family="Maitree"
     ),
     margin=dict(l=50, r=50, t=60, b=50),
+    yaxis_tickformat = '.2%',
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
+st.markdown('ข้อมูลจาก [@djay](https://github.com/djay/covidthailand) รวบรวมจากกรมควบคุมโรค มีการประมาณค่าในวันที่ไม่มีข้อมูล (interpolation)')
 
 # fig.add_trace(
 #     go.Scatter(x=x, y=vaccine2_y, name="จำนวนผู้ได้รับวัคซีน 2 เข็มสะสม / จำนวนประชากร",line_color='green',),
