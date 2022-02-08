@@ -42,7 +42,7 @@ html, body {
 )
 
 # load data
-df = pd.read_csv('data/djay_joined_new4.csv')
+df = pd.read_csv('data/djay_joined_new5.csv')
 df['ymd'] = df.Date.map(lambda x: f'{x.split("/")[2].zfill(2)}-{x.split("/")[1].zfill(2)}-{x.split("/")[0].zfill(2)}')
 
 # sidebar
@@ -51,11 +51,11 @@ all_provinces = sorted(df.Province_th.unique().tolist())
 province = st.sidebar.selectbox('จังหวัด', all_provinces, index=all_provinces.index('นครนายก'))
 date_begin = st.sidebar.date_input('ตั้งแต่วันที่', value=datetime.date(2021, 1, 1),
                                    min_value=datetime.date(2020, 3, 1),
-                                   max_value=datetime.date(2021, 12, 31))
+                                   max_value=datetime.date(2022, 2, 3))
 date_begin = str(date_begin)
-date_end = st.sidebar.date_input('ถึงวันที่', value=datetime.date(2021, 12, 31),
+date_end = st.sidebar.date_input('ถึงวันที่', value=datetime.date(2022, 2, 3),
                                  min_value=datetime.date(2020, 3, 1),
-                                 max_value=datetime.date(2021, 12, 31))
+                                 max_value=datetime.date(2022, 2, 3))
 date_end = str(date_end)
 
 # prep data
