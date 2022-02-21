@@ -20,7 +20,7 @@ Vac Given 3 Cum new	(number of population who have received 3rd vaccination)</br
 2vacpercap (number of population who have received 2nd vaccination divided by population, %)</br>
 3vacpercap (number of population who have received 3rd vaccination divided by population, %)</br>
 
-## Data source:
+## Data sources:
 ### djay/covidthailand (https://github.com/djay/covidthailand) </br>
 moph_dashboard_prov.csv (cases, deaths, tests; vac given 1, vac given 2, vac given 3 - since January 21, 2022) </br>
 vaccinations.csv (vac given 1, vac given 2, vac given 3 - until Janunary 20, 2022) </br>
