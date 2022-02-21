@@ -25,7 +25,7 @@ December 12, 1 - 23 (Mukdahan and Sing Buri only for anomal daily cases), 24 - 2
 ### 2022
 January 4 - 6, 6 (Nan only for anomal daily cases) </br>
 
-## Append
+## Versions
 January 6, 2022 </br>
 February 23, 2022 </br>
 February 22, 2022 </br>
