@@ -1,5 +1,25 @@
 # covid_vaccine_provinces
 
+## Variables
+Date </br> 
+Province </br> 
+Province_th </br>
+region (NESDC region) </br>
+population (MOPH calculation, see below) </br>
+Cases (number of daily cases) </br>
+cases14days	(14-day moving average of number of daily cases) </br>
+case14percap (14-day moving average of number of daily cases divided by population)</br> 
+cases_cum	(number of total cases) </br>
+case_cum_percap	(number of total cases divided by population) </br>
+Deaths	</br>
+Tests	</br>
+Vac Given 1 Cum new	(number of population who have received 1st vaccination) </br>
+Vac Given 2 Cum new	(number of population who have received 2nd vaccination)</br>
+Vac Given 3 Cum new	(number of population who have received 3rd vaccination)</br>
+1vacpercap (number of population who have received 1st vaccination divided by population, %) </br>
+2vacpercap (number of population who have received 2nd vaccination divided by population, %)</br>
+3vacpercap (number of population who have received 3rd vaccination divided by population, %)</br>
+
 ## Data source:
 ### djay/covidthailand (https://github.com/djay/covidthailand) </br>
 moph_dashboard_prov.csv (cases, deaths, tests; vac given 1, vac given 2, vac given 3 - since January 21, 2022) </br>
