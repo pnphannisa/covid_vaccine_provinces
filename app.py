@@ -346,7 +346,7 @@ fig.update_traces(
 fig.update_layout(
     template='none',
     # plot_bgcolor='#E9E7DD',
-    title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรรต่อจำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
+    title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรร/จำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
     title_font={"size": 16, "family": "Maitree"},
     legend=dict(
         yanchor="top",
