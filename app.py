@@ -378,8 +378,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="bottom">ข้อมูลจาก [@djay](https://github.com/djay/covidthailand)
-            รวบรวมจากกรมควบคุมโรค มีการประมาณค่าในวันที่ไม่มีข้อมูล (interpolation)</p>', 
+st.markdown('<p class="bottom">ข้อมูลจาก [@djay](https://github.com/djay/covidthailand) รวบรวมจากกรมควบคุมโรค มีการประมาณค่าในวันที่ไม่มีข้อมูล (interpolation)</p>', 
             unsafe_allow_html=True)
 
 # fig.add_trace(
