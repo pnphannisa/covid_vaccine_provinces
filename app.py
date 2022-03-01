@@ -369,7 +369,17 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-st.markdown('ข้อมูลจาก [@djay](https://github.com/djay/covidthailand) รวบรวมจากกรมควบคุมโรค มีการประมาณค่าในวันที่ไม่มีข้อมูล (interpolation)', font_family="Maitree")
+st.markdown("""
+<style>
+.bottom {
+    font-family:"Maitree";
+    font-size:12px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown('<p class="bottom">ข้อมูลจาก [@djay](https://github.com/djay/covidthailand) รวบรวมจากกรมควบคุมโรค มีการประมาณค่าในวันที่ไม่มีข้อมูล (interpolation)</p>', 
+            unsafe_allow_html=True)
 
 # fig.add_trace(
 #     go.Scatter(x=x, y=vaccine2_y, name="จำนวนผู้ได้รับวัคซีน 2 เข็มสะสม / จำนวนประชากร",line_color='green',),
