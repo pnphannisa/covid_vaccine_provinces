@@ -269,14 +269,14 @@ fig = make_subplots(specs=[[{"secondary_y": True}]])
 # Add traces
 fig.add_trace(
     go.Scatter(x=x, y=vac_all_y, name="วัคซีนทั้งหมด/ประชากร",
-               line=dict(color='#715AFF', width=2,)),
+               line=dict(color='#472F05', width=2,)),
     secondary_y=False,
 )
 
 fig.add_trace(
     go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#715AFF',
+                   h='#871C0E',
                    alpha=0.5,
                )),
                    width=2, dash='dot')),
@@ -286,7 +286,7 @@ fig.add_trace(
 fig.add_trace(
     go.Scatter(x=x, y=vac_moderna_y, name="Moderna/จำนวนประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#715AFF',
+                   h='#EC6816',
                    alpha=0.5,
                )),
                    width=2, dash='dot')),
@@ -296,7 +296,7 @@ fig.add_trace(
 fig.add_trace(
     go.Scatter(x=x, y=vac_pfizer_y, name="Pfizer/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#715AFF',
+                   h='#F08315',
                    alpha=0.5,
                )),
                    width=2, dash='dot')),
@@ -306,7 +306,7 @@ fig.add_trace(
 fig.add_trace(
     go.Scatter(x=x, y=vac_sinopharm_y, name="Sinopharm/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#715AFF',
+                   h='#FAA943',
                    alpha=0.5,
                )),
                    width=2, dash='dot')),
