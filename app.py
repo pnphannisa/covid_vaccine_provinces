@@ -339,7 +339,7 @@ fig.update_yaxes(zeroline=True, zerolinewidth=0.25, zerolinecolor='#000000')
 #legend and hover
 fig.update_traces(
     mode="lines",
-    hoverinfo='y+x',
+    hoverinfo='y+x+name',
     # hovermode="x unified",
     # hovertemplate='%{y}',
 )
