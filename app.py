@@ -75,6 +75,12 @@ case_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable
 vaccine1_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == '1vacpercap')].value
 vaccine2_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == '2vacpercap')].value
 vaccine3_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == '3vacpercap')].value
+vac_all_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_all_percap')].value
+vac_astra_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_astra_percap')].value
+vac_moderna_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_moderna_percap')].value
+vac_pfizer_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_pfizer_percap')].value
+vac_sinopharm_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_sinopharm_percap')].value
+vac_sinovac_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_sinovac_percap')].value
 
 #global average
 df_global = df[['ymd', 'Province_th', 'population', 'cases_cum',
@@ -262,13 +268,53 @@ fig = make_subplots(specs=[[{"secondary_y": True}]])
 
 # Add traces
 fig.add_trace(
-    go.Scatter(x=x, y=vaccine3_y, name="จำนวนผู้ได้รับวัคซีนเข็ม 3/จำนวนประชากร",
+    go.Scatter(x=x, y=vac_all_y, name="จำนวนวัคซีนที่ได้รับการจัดสรรทั้งหมดต่อจำนวนประชากร",
                line=dict(color='#715AFF', width=2,)),
     secondary_y=False,
 )
 
 fig.add_trace(
-    go.Scatter(x=x, y=vaccine3_y_global, name="ค่าเฉลี่ยทั่วประเทศ",
+    go.Scatter(x=x, y=vac_astra_y, name="จำนวนวัคซีน Astrazeneca ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#715AFF',
+                   alpha=0.5,
+               )),
+                   width=2, dash='dot')),
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_moderna_y, name="จำนวนวัคซีน Moderna ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#715AFF',
+                   alpha=0.5,
+               )),
+                   width=2, dash='dot')),
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_pfizer_y, name="จำนวนวัคซีน Pfizer ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#715AFF',
+                   alpha=0.5,
+               )),
+                   width=2, dash='dot')),
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_sinopharm_y, name="จำนวนวัคซีน Sinopharm ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#715AFF',
+                   alpha=0.5,
+               )),
+                   width=2, dash='dot')),
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_sinovac_y, name="จำนวนวัคซีน Sinovac ที่ได้รับการจัดสรรต่อจำนวนประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#715AFF',
                    alpha=0.5,
@@ -300,7 +346,7 @@ fig.update_traces(
 fig.update_layout(
     template='none',
     # plot_bgcolor='#E9E7DD',
-    title={'text': 'จำนวนผู้ได้รับวัคซีนเข็ม 3/จำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
+    title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรร/จำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
     title_font={"size": 16, "family": "Maitree"},
     legend=dict(
         yanchor="top",
