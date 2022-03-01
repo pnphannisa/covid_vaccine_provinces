@@ -268,13 +268,13 @@ fig = make_subplots(specs=[[{"secondary_y": True}]])
 
 # Add traces
 fig.add_trace(
-    go.Scatter(x=x, y=vac_all_y, name="จำนวนวัคซีนที่ได้รับการจัดสรรทั้งหมดต่อจำนวนประชากร",
+    go.Scatter(x=x, y=vac_all_y, name="วัคซีนทั้งหมด/ประชากร",
                line=dict(color='#715AFF', width=2,)),
     secondary_y=False,
 )
 
 fig.add_trace(
-    go.Scatter(x=x, y=vac_astra_y, name="จำนวนวัคซีน Astrazeneca ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+    go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#715AFF',
                    alpha=0.5,
@@ -284,7 +284,7 @@ fig.add_trace(
 )
 
 fig.add_trace(
-    go.Scatter(x=x, y=vac_moderna_y, name="จำนวนวัคซีน Moderna ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+    go.Scatter(x=x, y=vac_moderna_y, name="Moderna/จำนวนประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#715AFF',
                    alpha=0.5,
@@ -294,7 +294,7 @@ fig.add_trace(
 )
 
 fig.add_trace(
-    go.Scatter(x=x, y=vac_pfizer_y, name="จำนวนวัคซีน Pfizer ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+    go.Scatter(x=x, y=vac_pfizer_y, name="Pfizer/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#715AFF',
                    alpha=0.5,
@@ -304,7 +304,7 @@ fig.add_trace(
 )
 
 fig.add_trace(
-    go.Scatter(x=x, y=vac_sinopharm_y, name="จำนวนวัคซีน Sinopharm ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+    go.Scatter(x=x, y=vac_sinopharm_y, name="Sinopharm/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#715AFF',
                    alpha=0.5,
@@ -314,7 +314,7 @@ fig.add_trace(
 )
 
 fig.add_trace(
-    go.Scatter(x=x, y=vac_sinovac_y, name="จำนวนวัคซีน Sinovac ที่ได้รับการจัดสรรต่อจำนวนประชากร",
+    go.Scatter(x=x, y=vac_sinovac_y, name="Sinovac/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#715AFF',
                    alpha=0.5,
@@ -334,7 +334,7 @@ fig.update_xaxes(
 fig.update_yaxes(showgrid=True, gridwidth=0.25, )
 fig.update_yaxes(tickfont={"size": 12, "family": "Maitree"},)
 fig.update_yaxes(zeroline=True, zerolinewidth=0.25, zerolinecolor='#000000')
-# fig.update_yaxes(title_text="จำนวนผู้ได้รับวัคซีนสะสม / จำนวนประชากร", secondary_y=True)
+# fig.update_yaxes(title_text="จำนวนวัคซีนที่ได้รับการจัดสรร / จำนวนประชากร", secondary_y=True)
 
 #legend and hover
 fig.update_traces(
@@ -346,7 +346,7 @@ fig.update_traces(
 fig.update_layout(
     template='none',
     # plot_bgcolor='#E9E7DD',
-    title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรร/จำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
+    title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรรต่อจำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
     title_font={"size": 16, "family": "Maitree"},
     legend=dict(
         yanchor="top",
