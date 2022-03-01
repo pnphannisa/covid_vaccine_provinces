@@ -63,7 +63,13 @@ df_m = df[df.Province_th == province][['ymd', 'Province_th',
                                        'case_cum_percap',
                                        '1vacpercap',
                                        '2vacpercap',
-                                       '3vacpercap']].melt(id_vars=['ymd', 'Province_th'])
+                                       '3vacpercap',
+                                       'vac_all_percap',
+                                       'vac_astra_percap',
+                                      'vac_moderna_percap',
+                                      'vac_pfizer_percap',
+                                       'vac_sinopharm_percap',
+                                      'vac_sinovac_percap',]].melt(id_vars=['ymd', 'Province_th'])
 x = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'case_cum_percap')].ymd
 case_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'case_cum_percap')].value
 vaccine1_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == '1vacpercap')].value
@@ -170,6 +176,12 @@ fig.add_trace(
 )
 
 fig.add_trace(
+    go.Scatter(x=x, y=vaccine3_y, name="3 เข็ม",
+               line=dict(color='#715aff', width=2,)),
+    secondary_y=False,
+)
+
+fig.add_trace(
     go.Scatter(x=x, y=vaccine1_y_global, name="ค่าเฉลี่ยทั่วประเทศ 1 เข็ม",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#4aa5ea',
@@ -183,6 +195,16 @@ fig.add_trace(
     go.Scatter(x=x, y=vaccine2_y_global, name="ค่าเฉลี่ยทั่วประเทศ 2 เข็ม",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#245EF3',
+                   alpha=0.5,
+               )),
+                   width=2, dash='dot')),
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vaccine3_y_global, name="ค่าเฉลี่ยทั่วประเทศ 3 เข็ม",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#715aff',
                    alpha=0.5,
                )),
                    width=2, dash='dot')),
