@@ -284,7 +284,7 @@ fig.add_trace(
 )
 
 fig.add_trace(
-    go.Scatter(x=x, y=vac_moderna_y, name="Moderna/จำนวนประชากร",
+    go.Scatter(x=x, y=vac_moderna_y, name="Moderna/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#EC6816',
                    alpha=0.5,
