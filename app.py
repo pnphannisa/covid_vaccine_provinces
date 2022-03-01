@@ -277,49 +277,49 @@ fig.add_trace(
     go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#871C0E',
-                   alpha=0.5,
+                   alpha=1,
                )),
-                   width=2, dash='dot')),
+                   width=1, dash='dot')),
     secondary_y=False,
 )
 
 fig.add_trace(
     go.Scatter(x=x, y=vac_moderna_y, name="Moderna/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#EC6816',
-                   alpha=0.5,
+                   h='#BB4E0B',
+                   alpha=1,
                )),
-                   width=2, dash='dot')),
+                   width=1, dash='dot')),
     secondary_y=False,
 )
 
 fig.add_trace(
     go.Scatter(x=x, y=vac_pfizer_y, name="Pfizer/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#F08315',
-                   alpha=0.5,
+                   h='#EC6816',
+                   alpha=1,
                )),
-                   width=2, dash='dot')),
+                   width=1, dash='dot')),
     secondary_y=False,
 )
 
 fig.add_trace(
     go.Scatter(x=x, y=vac_sinopharm_y, name="Sinopharm/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#FAA943',
-                   alpha=0.5,
+                   h='#F08315',
+                   alpha=1,
                )),
-                   width=2, dash='dot')),
+                   width=1, dash='dot')),
     secondary_y=False,
 )
 
 fig.add_trace(
     go.Scatter(x=x, y=vac_sinovac_y, name="Sinovac/ประชากร",
                line=dict(color='rgba' + str(hex_to_rgba(
-                   h='#715AFF',
-                   alpha=0.5,
+                   h='#FAA943',
+                   alpha=1,
                )),
-                   width=2, dash='dot')),
+                   width=1, dash='dot')),
     secondary_y=False,
 )
 
