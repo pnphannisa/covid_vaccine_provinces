@@ -87,7 +87,7 @@ vac_sinovac_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.v
 df_n = df[['ymd','Province_th','vac_astra_percap',
            'vac_moderna_percap','vac_pfizer_percap',
            'vac_sinopharm_percap','vac_sinovac_percap']].melt(id_vars=['ymd','Province_th'])
-df_n = df_n[df_n.ymd >= date_begin) & (df_n.ymd<=date_end)]
+df_n = df_n[(df_n.ymd >= date_begin) & (df_n.ymd<=date_end)]
 
 #global average
 df_global = df[['ymd', 'Province_th', 'population', 'cases_cum',
