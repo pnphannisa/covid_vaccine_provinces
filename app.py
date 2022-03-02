@@ -377,7 +377,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 #plot vaccine brand
 c = alt.Chart(df_n[df_n.Province_th==province]).mark_area().encode(
-    alt.X('date_dt:T'),
+    alt.X('ymd:T'),
     alt.Y('value:Q', axis=alt.Axis(format='%'), scale=alt.Scale(domain=[0, 2.5])),
     color='variable:N'
 )
