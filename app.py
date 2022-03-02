@@ -273,13 +273,12 @@ st.plotly_chart(fig, use_container_width=True)
 # Create figure with secondary y-axis
 fig = make_subplots(specs=[[{"secondary_y": True}]])
 
-# Add traces
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_all_y, name="วัคซีนทั้งหมด/ประชากร",
-#                line=dict(color='#472F05', width=2,)),
-#                stackgroup='one' # define stack group,
-#     secondary_y=False,
-# )
+Add traces
+fig.add_trace(
+    go.Scatter(x=x, y=vac_all_y, name="วัคซีนทั้งหมด/ประชากร",
+               line=dict(color='#472F05', width=2,)),
+    secondary_y=False,
+)
 
 fig.add_trace(
     go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca/ประชากร",
@@ -287,7 +286,6 @@ fig.add_trace(
                    h='#871C0E',
                    alpha=0.75,)),
                    width=2, dash='dot')),
-    stackgroup='one',
     secondary_y=False,
 )
 
@@ -306,7 +304,6 @@ fig.add_trace(
                    h='#EC6816',
                    alpha=0.75,)),
                    width=2, dash='dot')),
-    stackgroup='one',
     secondary_y=False,
 )
 
@@ -316,7 +313,6 @@ fig.add_trace(
                    h='#F08315',
                    alpha=0.75,)),
                    width=2, dash='dot')),
-    stackgroup='one',
     secondary_y=False,
 )
 
@@ -326,7 +322,6 @@ fig.add_trace(
                    h='#FAA943',
                    alpha=0.75,)),
                    width=2, dash='dot')),
-    stackgroup='one',
     secondary_y=False,
 )
 
