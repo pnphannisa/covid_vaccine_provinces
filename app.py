@@ -1,4 +1,5 @@
 import pandas as pd
+import altair as alt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit as st
@@ -44,6 +45,11 @@ html, body {
 # load data
 df = pd.read_csv('data/djay_joined_new5.csv')
 df['ymd'] = df.Date.map(lambda x: f'{x.split("/")[2].zfill(2)}-{x.split("/")[1].zfill(2)}-{x.split("/")[0].zfill(2)}')
+
+#melt for vaccine brand
+df_m = df[['ymd','Province_th','vac_astra_percap',
+           'vac_moderna_percap','vac_pfizer_percap',
+           'vac_sinopharm_percap','vac_sinovac_percap']].melt(id_vars=['ymd','Province_th'])
 
 # sidebar
 # st.sidebar.write('### เลือกจังหวัดและช่วงเวลา')
@@ -368,6 +374,14 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
+#plot vaccine brand
+c = alt.Chart(df_m[df_m.Province_th==province]).mark_area().encode(
+    alt.X('date_dt:T'),
+    alt.Y('value:Q', axis=alt.Axis(format='%'), scale=alt.Scale(domain=[0, 2.5])),
+    color='variable:N'
+)
+st.altair_chart(c, use_container_width=True)
 
 st.markdown("""
 <style>
