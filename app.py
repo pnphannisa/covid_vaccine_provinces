@@ -269,122 +269,122 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-# # fig 3
-# # Create figure with secondary y-axis
-# fig = make_subplots(specs=[[{"secondary_y": True}]])
+# fig 3
+# Create figure with secondary y-axis
+fig = make_subplots(specs=[[{"secondary_y": True}]])
 
-# # Add traces
+# Add traces
 # fig.add_trace(
 #     go.Scatter(x=x, y=vac_all_y, name="วัคซีนทั้งหมด/ประชากร",
 #                line=dict(color='#472F05', width=2,)),
+#                stackgroup='one' # define stack group,
 #     secondary_y=False,
 # )
 
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#871C0E',
-#                    alpha=1,
-#                )),
-#                    width=1, dash='dot')),
-#     secondary_y=False,
-# )
-
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_moderna_y, name="Moderna/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#BB4E0B',
-#                    alpha=1,
-#                )),
-#                    width=1, dash='dot')),
-#     secondary_y=False,
-# )
-
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_pfizer_y, name="Pfizer/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#EC6816',
-#                    alpha=1,
-#                )),
-#                    width=1, dash='dot')),
-#     secondary_y=False,
-# )
-
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_sinopharm_y, name="Sinopharm/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#F08315',
-#                    alpha=1,
-#                )),
-#                    width=1, dash='dot')),
-#     secondary_y=False,
-# )
-
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_sinovac_y, name="Sinovac/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#FAA943',
-#                    alpha=1,
-#                )),
-#                    width=1, dash='dot')),
-#     secondary_y=False,
-# )
-
-# # Set x-axis
-# fig.update_xaxes(title_text="")
-# fig.update_xaxes(tickfont={"size": 12, "family": "Maitree"},)
-# fig.update_xaxes(
-#     dtick="M3",
-#     tickformat="%Y\n%m-%d")
-
-# # Set y-axes
-# fig.update_yaxes(showgrid=True, gridwidth=0.25, )
-# fig.update_yaxes(tickfont={"size": 12, "family": "Maitree"},)
-# fig.update_yaxes(zeroline=True, zerolinewidth=0.25, zerolinecolor='#000000')
-# # fig.update_yaxes(title_text="จำนวนวัคซีนที่ได้รับการจัดสรร / จำนวนประชากร", secondary_y=True)
-
-# #legend and hover
-# fig.update_traces(
-#     mode="lines",
-#     hoverinfo='y+x+name',
-#     # hovermode="x unified",
-#     # hovertemplate='%{y}',
-# )
-# fig.update_layout(
-#     template='none',
-#     # plot_bgcolor='#E9E7DD',
-#     title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรร/จำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
-#     title_font={"size": 16, "family": "Maitree"},
-#     legend=dict(
-#         yanchor="top",
-#         y=0.99,
-#         xanchor="left",
-#         x=0.01,
-#         font=dict(
-#             family="Maitree",
-#             size=13,
-#             color="black"
-#         )
-#     ),
-#     hoverlabel=dict(
-#         font_size=14,
-#         font_family="Maitree"
-#     ),
-#     margin=dict(l=50, r=50, t=60, b=50),
-#     yaxis_tickformat='.2%'
-# )
-
-# st.plotly_chart(fig, use_container_width=True)
-
-# fig 4
-
-#plot vaccine brand
-c = alt.Chart(df_n[df_n.Province_th==province]).mark_area().encode(
-    alt.X('ymd:T'),
-    alt.Y('value:Q', axis=alt.Axis(format='%'), scale=alt.Scale(domain=[0, 2.5])),
-    color='variable:N'
+fig.add_trace(
+    go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca/ประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#871C0E',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
 )
-st.altair_chart(c, use_container_width=True)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_moderna_y, name="Moderna/ประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#BB4E0B',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_pfizer_y, name="Pfizer/ประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#EC6816',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_sinopharm_y, name="Sinopharm/ประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#F08315',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
+
+fig.add_trace(
+    go.Scatter(x=x, y=vac_sinovac_y, name="Sinovac/ประชากร",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#FAA943',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
+
+# Set x-axis
+fig.update_xaxes(title_text="")
+fig.update_xaxes(tickfont={"size": 12, "family": "Maitree"},)
+fig.update_xaxes(
+    dtick="M3",
+    tickformat="%Y\n%m-%d")
+
+# Set y-axes
+fig.update_yaxes(showgrid=True, gridwidth=0.25, )
+fig.update_yaxes(tickfont={"size": 12, "family": "Maitree"},)
+fig.update_yaxes(zeroline=True, zerolinewidth=0.25, zerolinecolor='#000000')
+# fig.update_yaxes(title_text="จำนวนวัคซีนที่ได้รับการจัดสรร / จำนวนประชากร", secondary_y=True)
+
+#legend and hover
+fig.update_traces(
+    mode="lines",
+    hoverinfo='y+x+name',
+    # hovermode="x unified",
+    # hovertemplate='%{y}',
+)
+fig.update_layout(
+    template='none',
+    # plot_bgcolor='#E9E7DD',
+    title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรร/จำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
+    title_font={"size": 16, "family": "Maitree"},
+    legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01,
+        font=dict(
+            family="Maitree",
+            size=13,
+            color="black"
+        )
+    ),
+    hoverlabel=dict(
+        font_size=14,
+        font_family="Maitree"
+    ),
+    margin=dict(l=50, r=50, t=60, b=50),
+    yaxis_tickformat='.2%'
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
+# # fig 4
+
+# #plot vaccine brand
+# c = alt.Chart(df_n[df_n.Province_th==province]).mark_area().encode(
+#     alt.X('ymd:T'),
+#     alt.Y('value:Q', axis=alt.Axis(format='%'), scale=alt.Scale(domain=[0, 2.5])),
+#     color='variable:N'
+# )
+# st.altair_chart(c, use_container_width=True)
 
 # footer
 st.markdown("""
