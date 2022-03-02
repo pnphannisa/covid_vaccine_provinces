@@ -383,9 +383,6 @@ c = alt.Chart(df_n[df_n.Province_th==province]).mark_area().encode(
     alt.X('ymd:T'),
     alt.Y('value:Q', axis=alt.Axis(format='%'), scale=alt.Scale(domain=[0, 2.5])),
     color='variable:N'
-).configure_axis(
-    labelFontFamily='Maitree',
-    titleFontFamily='Maitree'
 )
 st.altair_chart(c, use_container_width=True)
 
