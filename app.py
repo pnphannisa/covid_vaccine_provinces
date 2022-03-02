@@ -376,6 +376,8 @@ st.plotly_chart(fig, use_container_width=True)
 
 # st.plotly_chart(fig, use_container_width=True)
 
+# fig 4
+
 #plot vaccine brand
 c = alt.Chart(df_n[df_n.Province_th==province]).mark_area().encode(
     alt.X('ymd:T'),
@@ -384,6 +386,31 @@ c = alt.Chart(df_n[df_n.Province_th==province]).mark_area().encode(
 )
 st.altair_chart(c, use_container_width=True)
 
+# font setting
+
+def sfmono():
+    font = "Maitree"
+    
+    return {
+        "config" : {
+             "title": {'font': font},
+             "axis": {
+                  "labelFont": font,
+                  "titleFont": font
+             },
+             "header": {
+                  "labelFont": font,
+                  "titleFont": font
+             },
+             "legend": {
+                  "labelFont": font,
+                  "titleFont": font
+             }
+        }
+    }
+
+
+# footer
 st.markdown("""
 <style>
 .bottom {
