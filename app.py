@@ -273,7 +273,7 @@ st.plotly_chart(fig, use_container_width=True)
 # Create figure with secondary y-axis
 fig = make_subplots(specs=[[{"secondary_y": True}]])
 
-Add traces
+# Add traces
 fig.add_trace(
     go.Scatter(x=x, y=vac_all_y, name="วัคซีนทั้งหมด/ประชากร",
                line=dict(color='#472F05', width=2,)),
