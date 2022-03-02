@@ -46,11 +46,6 @@ html, body {
 df = pd.read_csv('data/djay_joined_new5.csv')
 df['ymd'] = df.Date.map(lambda x: f'{x.split("/")[2].zfill(2)}-{x.split("/")[1].zfill(2)}-{x.split("/")[0].zfill(2)}')
 
-#melt for vaccine brand
-df_m = df[['ymd','Province_th','vac_astra_percap',
-           'vac_moderna_percap','vac_pfizer_percap',
-           'vac_sinopharm_percap','vac_sinovac_percap']].melt(id_vars=['ymd','Province_th'])
-
 # sidebar
 # st.sidebar.write('### เลือกจังหวัดและช่วงเวลา')
 all_provinces = sorted(df.Province_th.unique().tolist())
@@ -87,6 +82,11 @@ vac_moderna_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.v
 vac_pfizer_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_pfizer_percap')].value
 vac_sinopharm_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_sinopharm_percap')].value
 vac_sinovac_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_sinovac_percap')].value
+
+#melt for vaccine brand
+df_n = df[['ymd','Province_th','vac_astra_percap',
+           'vac_moderna_percap','vac_pfizer_percap',
+           'vac_sinopharm_percap','vac_sinovac_percap']].melt(id_vars=['ymd','Province_th'])
 
 #global average
 df_global = df[['ymd', 'Province_th', 'population', 'cases_cum',
@@ -376,7 +376,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 #plot vaccine brand
-c = alt.Chart(df_m[df_m.Province_th==province]).mark_area().encode(
+c = alt.Chart(df_n[df_n.Province_th==province]).mark_area().encode(
     alt.X('date_dt:T'),
     alt.Y('value:Q', axis=alt.Axis(format='%'), scale=alt.Scale(domain=[0, 2.5])),
     color='variable:N'
