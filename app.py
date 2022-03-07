@@ -357,7 +357,7 @@ fig.update_layout(
         font_family="Maitree"
     ),
     margin=dict(l=50, r=50, t=60, b=50),
-    yaxis_tickformat=',.0f'
+#     yaxis_tickformat=',.0f'
 )
 
 st.plotly_chart(fig, use_container_width=True)
