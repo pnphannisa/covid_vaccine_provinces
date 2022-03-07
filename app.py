@@ -276,7 +276,7 @@ fig.add_trace(
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#871C0E',
                    alpha=0.75,)),
-                   width=2, dash='dot',),stackgroup='one',),
+                   width=2,),stackgroup='one',),
     secondary_y=False,
 )
 
@@ -285,7 +285,7 @@ fig.add_trace(
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#BB4E0B',
                    alpha=0.75,)),
-                   width=2, dash='dot',),stackgroup='one',),
+                   width=2,),stackgroup='one',),
     secondary_y=False,
 )
 
@@ -294,7 +294,7 @@ fig.add_trace(
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#EC6816',
                    alpha=0.75,)),
-                   width=2, dash='dot',),stackgroup='one',),
+                   width=2,),stackgroup='one',),
     secondary_y=False,
 )
 
@@ -303,7 +303,7 @@ fig.add_trace(
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#F08315',
                    alpha=0.75,)),
-                   width=2, dash='dot',), stackgroup='one',),
+                   width=2,), stackgroup='one',),
     secondary_y=False,
 )
 
@@ -312,7 +312,7 @@ fig.add_trace(
                line=dict(color='rgba' + str(hex_to_rgba(
                    h='#FAA943',
                    alpha=0.75,)),
-                   width=2, dash='dot',), stackgroup='one',),
+                   width=2,), stackgroup='one',),
     secondary_y=False,
 )
 
@@ -357,7 +357,7 @@ fig.update_layout(
         font_family="Maitree"
     ),
     margin=dict(l=50, r=50, t=60, b=50),
-    yaxis_tickformat='.2%'
+    yaxis_tickformat=',.0f'
 )
 
 st.plotly_chart(fig, use_container_width=True)
