@@ -20,23 +20,19 @@ st.markdown(
     """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Maitree:wght@500;600&display=swap');
-
 #vs {
     font-family: 'Maitree';
     font-weight: 600;
     font-size: 32px;
 }
-
 .legend {
     font-family: 'Maitree';
     font-weight: 600;  
 }
-
 html, body {
     font-family: 'Maitree';
     font-weight: 500;
 }
-
 </style>
 """,
     unsafe_allow_html=True,
@@ -69,25 +65,26 @@ df_m = df[df.Province_th == province][['ymd', 'Province_th',
                                        'vac_astra_percap',
                                       'vac_moderna_percap',
                                       'vac_pfizer_percap',
-                                       'vac_sinopharm_percap',
-                                      'vac_sinovac_percap',]].melt(id_vars=['ymd', 'Province_th'])
+                                      'vac_sinopharm_percap',
+                                      'vac_sinovac_percap',
+                                      'Vac Allocated All',
+                                      'Vac Allocated AstraZeneca',
+                                      'Vac Allocated Moderna',
+                                      'Vac Allocated Pfizer',
+                                      'Vac Allocated Sinopharm',
+                                      'Vac Allocated Sinovac',
+                                      ]].melt(id_vars=['ymd', 'Province_th'])
 x = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'case_cum_percap')].ymd
 case_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'case_cum_percap')].value
 vaccine1_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == '1vacpercap')].value
 vaccine2_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == '2vacpercap')].value
 vaccine3_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == '3vacpercap')].value
-vac_all_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_all_percap')].value
-vac_astra_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_astra_percap')].value
-vac_moderna_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_moderna_percap')].value
-vac_pfizer_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_pfizer_percap')].value
-vac_sinopharm_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_sinopharm_percap')].value
-vac_sinovac_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'vac_sinovac_percap')].value
-
-#melt for vaccine brand
-df_n = df[['ymd','Province_th','vac_astra_percap',
-           'vac_moderna_percap','vac_pfizer_percap',
-           'vac_sinopharm_percap','vac_sinovac_percap']].melt(id_vars=['ymd','Province_th'])
-df_n = df_n[(df_n.ymd >= date_begin) & (df_n.ymd<=date_end)]
+vac_all_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'Vac Allocated All')].value
+vac_astra_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'Vac Allocated AstraZeneca')].value
+vac_moderna_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'Vac Allocated Moderna')].value
+vac_pfizer_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'Vac Allocated Pfizer')].value
+vac_sinopharm_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'Vac Allocated Sinopharm')].value
+vac_sinovac_y = df_m[(df_m.ymd >= date_begin) & (df_m.ymd <= date_end) & (df_m.variable == 'Vac Allocated Sinovac')].value
 
 #global average
 df_global = df[['ymd', 'Province_th', 'population', 'cases_cum',
@@ -269,107 +266,106 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-# # fig 3 plot.ly use this one
-# # Create figure with secondary y-axis
-# fig = make_subplots(specs=[[{"secondary_y": True}]])
+# fig 3 plot.ly use this one
+# Create figure with secondary y-axis
+fig = make_subplots(specs=[[{"secondary_y": True}]])
 
-# # Add traces
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_all_y, name="วัคซีนทั้งหมด/ประชากร",
-#                line=dict(color='#472F05', width=2,)),
-#     secondary_y=False,
-# )
+# Add traces
+fig.add_trace(
+    go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca (เข็ม)",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#871C0E',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
 
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_astra_y, name="Astrazeneca/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#871C0E',
-#                    alpha=0.75,)),
-#                    width=2, dash='dot')),
-#     secondary_y=False,
-# )
+fig.add_trace(
+    go.Scatter(x=x, y=vac_moderna_y, name="Moderna  (เข็ม)",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#BB4E0B',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
 
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_moderna_y, name="Moderna/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#BB4E0B',
-#                    alpha=0.75,)),
-#                    width=2, dash='dot')),
-#     secondary_y=False,
-# )
+fig.add_trace(
+    go.Scatter(x=x, y=vac_pfizer_y, name="Pfizer  (เข็ม)",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#EC6816',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
 
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_pfizer_y, name="Pfizer/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#EC6816',
-#                    alpha=0.75,)),
-#                    width=2, dash='dot')),
-#     secondary_y=False,
-# )
+fig.add_trace(
+    go.Scatter(x=x, y=vac_sinopharm_y, name="Sinopharm  (เข็ม)",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#F08315',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
 
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_sinopharm_y, name="Sinopharm/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#F08315',
-#                    alpha=0.75,)),
-#                    width=2, dash='dot')),
-#     secondary_y=False,
-# )
+fig.add_trace(
+    go.Scatter(x=x, y=vac_sinovac_y, name="Sinovac  (เข็ม)",
+               line=dict(color='rgba' + str(hex_to_rgba(
+                   h='#FAA943',
+                   alpha=0.75,)),
+                   width=2, dash='dot')),
+    stackgroup='one',
+    secondary_y=False,
+)
 
-# fig.add_trace(
-#     go.Scatter(x=x, y=vac_sinovac_y, name="Sinovac/ประชากร",
-#                line=dict(color='rgba' + str(hex_to_rgba(
-#                    h='#FAA943',
-#                    alpha=0.75,)),
-#                    width=2, dash='dot')),
-#     secondary_y=False,
-# )
+# Set x-axis
+fig.update_xaxes(title_text="")
+fig.update_xaxes(tickfont={"size": 12, "family": "Maitree"},)
+fig.update_xaxes(
+    dtick="M3",
+    tickformat="%Y\n%m-%d")
 
-# # Set x-axis
-# fig.update_xaxes(title_text="")
-# fig.update_xaxes(tickfont={"size": 12, "family": "Maitree"},)
-# fig.update_xaxes(
-#     dtick="M3",
-#     tickformat="%Y\n%m-%d")
+# Set y-axes
+fig.update_yaxes(showgrid=True, gridwidth=0.25, )
+fig.update_yaxes(tickfont={"size": 12, "family": "Maitree"},)
+fig.update_yaxes(zeroline=True, zerolinewidth=0.25, zerolinecolor='#000000')
+# fig.update_yaxes(title_text="จำนวนวัคซีนที่ได้รับการจัดสรร / จำนวนประชากร", secondary_y=True)
 
-# # Set y-axes
-# fig.update_yaxes(showgrid=True, gridwidth=0.25, )
-# fig.update_yaxes(tickfont={"size": 12, "family": "Maitree"},)
-# fig.update_yaxes(zeroline=True, zerolinewidth=0.25, zerolinecolor='#000000')
-# # fig.update_yaxes(title_text="จำนวนวัคซีนที่ได้รับการจัดสรร / จำนวนประชากร", secondary_y=True)
+#legend and hover
+fig.update_traces(
+    mode="lines",
+    hoverinfo='y+x+name',
+    # hovermode="x unified",
+    # hovertemplate='%{y}',
+)
+fig.update_layout(
+    template='none',
+    # plot_bgcolor='#E9E7DD',
+    title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรร', 'xanchor': 'left', 'x': 0.05},
+    title_font={"size": 16, "family": "Maitree"},
+    legend=dict(
+        yanchor="top",
+        y=0.99,
+        xanchor="left",
+        x=0.01,
+        font=dict(
+            family="Maitree",
+            size=13,
+            color="black"
+        )
+    ),
+    hoverlabel=dict(
+        font_size=14,
+        font_family="Maitree"
+    ),
+    margin=dict(l=50, r=50, t=60, b=50),
+    yaxis_tickformat='.2%'
+)
 
-# #legend and hover
-# fig.update_traces(
-#     mode="lines",
-#     hoverinfo='y+x+name',
-#     # hovermode="x unified",
-#     # hovertemplate='%{y}',
-# )
-# fig.update_layout(
-#     template='none',
-#     # plot_bgcolor='#E9E7DD',
-#     title={'text': 'จำนวนวัคซีนที่ได้รับการจัดสรร/จำนวนประชากร', 'xanchor': 'left', 'x': 0.05},
-#     title_font={"size": 16, "family": "Maitree"},
-#     legend=dict(
-#         yanchor="top",
-#         y=0.99,
-#         xanchor="left",
-#         x=0.01,
-#         font=dict(
-#             family="Maitree",
-#             size=13,
-#             color="black"
-#         )
-#     ),
-#     hoverlabel=dict(
-#         font_size=14,
-#         font_family="Maitree"
-#     ),
-#     margin=dict(l=50, r=50, t=60, b=50),
-#     yaxis_tickformat='.2%'
-# )
-
-# st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True)
 
 # # fig 4 alt air let's change to plot.ly
 
