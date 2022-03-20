@@ -382,7 +382,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="bottom">ข้อมูลจาก [@djay](https://github.com/djay/covidthailand) รวบรวมจากกรมควบคุมโรค มีการประมาณค่าในวันที่ไม่มีข้อมูล ไม่มีข้อมูลวัคซีนที่ได้รับการจัดสรรรายยี่ห้อและรายจังหวัดตั้งแต่วันที่ 21 กุมภาพันธ์ 2022(interpolation)</p>', 
+st.markdown('<p class="bottom">ข้อมูลจาก [@djay](https://github.com/djay/covidthailand) รวบรวมจากกรมควบคุมโรค มีการประมาณค่าในวันที่ไม่มีข้อมูล (interpolation) ไม่มีข้อมูลวัคซีนที่ได้รับการจัดสรรรายยี่ห้อและรายจังหวัดตั้งแต่วันที่ 21 กุมภาพันธ์ 2022</p>', 
             unsafe_allow_html=True)
 
 # fig.add_trace(
